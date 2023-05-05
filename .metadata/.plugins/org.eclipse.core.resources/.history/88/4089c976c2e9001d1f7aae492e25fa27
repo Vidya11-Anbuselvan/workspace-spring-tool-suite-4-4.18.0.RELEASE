@@ -1,0 +1,72 @@
+package com.example.books.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+
+@Entity
+@Table(name="TicketBookingDetails")
+public class Books {
+   
+	@Id 
+	@GeneratedValue
+	@Column(name="id")
+	private int id;
+	@Override
+	public String toString() {
+		return "DuplicateModel [id=" + id + ", tbookingfrom=" + tbookingfrom + ", tbookingto=" + tbookingto
+				+ ", tbookingdate=" + tbookingdate + ", tbookingcompartment=" + tbookingcompartment + "]";
+	}
+	public Books() {
+		super();
+	}
+	public Books(int id, String tbookingfrom, String tbookingto, String tbookingdate,
+			String tbookingcompartment) {
+		super();
+		this.id = id;
+		this.tbookingfrom = tbookingfrom;
+		this.tbookingto = tbookingto;
+		this.tbookingdate = tbookingdate;
+		this.tbookingcompartment = tbookingcompartment;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTbookingfrom() {
+		return tbookingfrom;
+	}
+	public void setTbookingfrom(String tbookingfrom) {
+		this.tbookingfrom = tbookingfrom;
+	}
+	public String getTbookingto() {
+		return tbookingto;
+	}
+	public void setTbookingto(String tbookingto) {
+		this.tbookingto = tbookingto;
+	}
+	public String getTbookingdate() {
+		return tbookingdate;
+	}
+	public void setTbookingdate(String tbookingdate) {
+		this.tbookingdate = tbookingdate;
+	}
+	public String getTbookingcompartment() {
+		return tbookingcompartment;
+	}
+	public void setTbookingcompartment(String tbookingcompartment) {
+		this.tbookingcompartment = tbookingcompartment;
+	}
+	@Column(name="from")
+	private String tbookingfrom;
+	@Column(name="to")
+	private String tbookingto;
+	@Column(name="date")
+	private String tbookingdate;
+	@Column(name="compartment")
+	private String tbookingcompartment;
+}

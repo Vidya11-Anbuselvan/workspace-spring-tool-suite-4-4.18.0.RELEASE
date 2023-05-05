@@ -1,0 +1,108 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Student;
+import com.example.demo.service.StudentService;
+
+@RestController
+public class StudentController { 
+	
+	@Autowired
+    StudentService studService;
+	
+	
+	@GetMapping(value="/fetchStudents")
+	public List<Student>getAllStudents()
+	{
+		List<Student>studList=studService.getAllStudents();
+		return studList;
+	}
+	
+	
+	@PostMapping(value="/saveStudents")
+	public  Student saveStudents(@RequestBody Student u)
+	{
+		return studService.saveStudents(u);
+	}
+	 
+	
+	@PutMapping(value="/updateStudent/{regno}")
+	public  Student updateStudent(@RequestBody Student u, @PathVariable int regno)
+	{
+		return studService.updateStudent(u,regno);
+	}
+	
+	
+	//http://localhost:8080/deleteStudent/3
+	@DeleteMapping(value="/deleteStudent/{rno}")
+	public void  deleteStudent(@PathVariable("rno")  int regno)
+	{
+		studService.deleteStudents(regno);
+	}
+	
+	
+	@GetMapping(value="/getStudent/{rno}")
+	public Student getStudent(@PathVariable("rno")  int regno)
+	{
+		return studService.getStudent(regno);
+	}
+	
+	//http://localhost:8080/sortStudent/name
+	@GetMapping("/sortStudent/{field}")
+	public List<Student>sortStudents(@PathVariable String field)
+	{
+		return studService.sortStudents(field);
+	}
+	
+	@GetMapping("/pagingStudents/{offset}/{pageSize}")
+	public List<Student>pagingStudents(@PathVariable("offset") int num,@PathVariable("pageSize") int size)
+	{
+		return studService.pagingStudents(num,size);
+	}
+	
+	@GetMapping("pagination/{nm}/{sp}/{inr}")
+	public List<Student> paginate(@PathVariable("nm") int num,@PathVariable("sp") int size,@PathVariable("inr") String name)
+	{
+		return studService.paginate(num,size,name);
+	}
+	
+	//http://localhost:8080/fetchStudentsByNamePrefix?prefix=j
+	@GetMapping("/fetchStudentsByNamePrefix")
+	public List<Student>fetchStudentsByNamePrefix(@RequestParam String prefix)
+	{
+		return studService.fetchStudentsByNamePrefix(prefix);
+	}
+	
+	//http://localhost:8080/fetchStudentsByNameSuffix?suffix=n
+		@GetMapping("/fetchStudentsByNameSuffix")
+		public List<Student>fetchStudentsByNameSuffix(@RequestParam String suffix)
+		{
+			return studService.fetchStudentsByNameSuffix(suffix);
+		}
+		
+	//http://localhost:8080/findByDepartment?dept=EEE
+        @GetMapping("/findByDepartment")
+	    public List<Student>findByDept(@RequestParam String dept)
+		  {
+			return studService.findByDept(dept);
+		  }
+        
+      //http://localhost:8080/fetchStudentsByDepartment/EEE/john
+        @GetMapping("/fetchStudentsByDepartment/{dept}/{name}")
+        public List<Student> fetchStudentsByDepartment(@PathVariable 
+        		String dept,@PathVariable String name)
+        {
+        	return studService.getStudentsByDepartment(dept, name);
+        }
+}
