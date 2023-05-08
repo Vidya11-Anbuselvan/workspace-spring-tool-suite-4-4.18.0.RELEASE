@@ -24,7 +24,6 @@
     <fullyQualifiedTypeName name="com.example.demo.repository.UserRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.service.UserService"/>
     <fullyQualifiedTypeName name="com.example.demo.model.User"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="com.example.demo.repository.RegistrationRepository"/>
     <fullyQualifiedTypeName name="com.example.demo.model.Registration"/>
@@ -35,4 +34,5 @@
     <fullyQualifiedTypeName name="com.example.crudproject.Repository.CrudRepository"/>
     <fullyQualifiedTypeName name="com.example.crudproject.Model.Crud"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
 </qualifiedTypeNameHistroy>
